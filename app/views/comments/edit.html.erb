@@ -1,0 +1,5 @@
+<h1>Edit Answer</h1>
+<%= simple_form_for ([@question, @comment]) do |f| %>
+    <%= f.input :content, label: "Answer:" %>
+    <%= f.button :submit %>
+<% end %>

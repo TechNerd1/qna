@@ -1,0 +1,5 @@
+<%= simple_form_for @question do |f| %>
+    <%= f.input :title, as: :text, :input_html => {:minlength => 10 , maxlength: 25}  , label: "Question Title"%>
+    <%= f.button :submit %>
+    
+<% end %>
