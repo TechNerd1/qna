@@ -1,5 +1,20 @@
 <div id="question">
-    <h3><%= User.find(@question.user_id).first_name%> <%=User.find(@question.user_id).last_name%> asks</h3>
+    
+    <% user_first_name = User.find(@question.user_id).first_name%>
+    <% user_last_name = User.find(@question.user_id).last_name%>
+    <% user_first_name = user_first_name.slice(0,1).capitalize + user_first_name.slice(1..-1)%>
+    <% user_last_name = user_last_name.slice(0,1).capitalize + user_last_name.slice(1..-1)%>
+    
+    <% if user_signed_in?%>
+        <% if @question.user_id == current_user.id%>
+        <button class=" btn btn-sm" data-toggle="collapse" data-target="#link" aria-expanded="false">Share</button>
+            <div class=" collapse" role="alert" id="link">
+                <h4>You're share url is <br><strong id="bar"><%= request.original_url %></strong></h4>
+            </div>
+        <% end %>
+    <% end %>
+    
+    <h3><%=user_first_name%> <%=user_last_name%> asks</h3>
     <h1><%= @question.title %></h1>
     
     
